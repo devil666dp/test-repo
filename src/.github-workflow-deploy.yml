@@ -72,9 +72,4 @@ jobs:
           sleep 3
           echo "✅ Staging deployment successful!"
           
-      - name: Deploy to Production
-        run: |
-          echo "🚀 Deploying to production..."
-          echo "Final production deployment"
-          sleep 5
-          echo "✅ Production deployment successful!"
+      
