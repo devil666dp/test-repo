@@ -1,0 +1,109 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    
+    - name: Install dependencies
+      run: |
+        echo "Installing dependencies..."
+        sleep 5
+    
+    - name: Run tests
+      run: |
+        echo "Running tests..."
+        sleep 10
+        echo "✅ All tests passed!"
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build application
+      run: |
+        echo "🔨 Building application..."
+        sleep 15
+        echo "✅ Build completed successfully!"
+    
+    - name: Create build artifact
+      run: |
+        echo "build-$(date +%s)" > build-info.txt
+        echo "Build artifact created"
+
+  deploy-staging:
+    needs: [test, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: staging
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to Staging
+      run: |
+        echo "🚀 Deploying to staging environment..."
+        sleep 20
+        echo "✅ Successfully deployed to staging!"
+        echo "Staging URL: https://staging.example.com"
+    
+    - name: Run smoke tests
+      run: |
+        echo "🧪 Running smoke tests on staging..."
+        sleep 10
+        echo "✅ Smoke tests passed!"
+
+  deploy-production:
+    needs: [test, build, deploy-staging]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to Production
+      run: |
+        echo "🚀 Deploying to production environment..."
+        sleep 30
+        echo "✅ Successfully deployed to production!"
+        echo "Production URL: https://example.com"
+    
+    - name: Post-deployment verification
+      run: |
+        echo "🔍 Verifying production deployment..."
+        sleep 10
+        echo "✅ Production deployment verified!"
+    
+    - name: Notify team
+      run: |
+        echo "📢 Notifying team of successful deployment..."
+        echo "Deployment completed at $(date)"
+
+  rollback:
+    runs-on: ubuntu-latest
+    if: failure()
+    environment: production
+    
+    steps:
+    - name: Rollback on failure
+      run: |
+        echo "⚠️ Deployment failed, initiating rollback..."
+        sleep 15
+        echo "🔄 Rollback completed!"
