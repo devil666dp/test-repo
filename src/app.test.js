@@ -17,5 +17,6 @@ describe('App Tests', () => {
         expect(multiply(-2, 5)).toBe(-10);
         expect(multiply(0, 100)).toBe(0);
         expect(multiply(1, 1)).toBe(1);
+        expect(multiply(-1, -1)).toBe(1);
     });
 });
