@@ -17,7 +17,7 @@ class UserManager {
         if (!user.email.includes('@')) {
             throw new Error('Email must be valid');
         }
-        
+        this.users.push(user);
         return user;
     }
 
