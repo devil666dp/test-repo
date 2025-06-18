@@ -4,7 +4,22 @@ class UserManager {
         this.users = [];
     }
 
-    
+    addUser(user) {
+        if (!user || typeof user !== 'object') {
+            throw new Error('User must be an object');
+        }
+        if (!user.name || !user.email) {
+            throw new Error('User must have name and email');
+        }
+        if (typeof user.name !== 'string' || typeof user.email !== 'string') {
+            throw new Error('Name and email must be strings');
+        }
+        if (!user.email.includes('@')) {
+            throw new Error('Email must be valid');
+        }
+        
+        return user;
+    }
 
     findUser(email) {
         return this.users.find(user => user.email === email);
