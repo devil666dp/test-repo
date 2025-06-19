@@ -18,3 +18,9 @@ module.exports = {
     processData,
     multiply
 };
+
+
+// Additional function to demonstrate module exports
+function greet(name) {
+    return `Hello, ${name}!`;
+}
