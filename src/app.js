@@ -1,6 +1,9 @@
 // Sample application entry point
 console.log('Hello, World!');
 
+// BREAK_DEPLOYMENT - Including problematic advanced feature
+const advancedFeature = require('./advanced-feature');
+
 function calculateSum(a, b) {
     return a + b;
 }
