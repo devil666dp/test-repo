@@ -53,9 +53,15 @@ function performSafeCalculation(x, y, operation) {
             success: false,
             result: null,
             error: error.message
+ 
+ 
+ 
         };
     }
 }
+
+//fix the bugs
+// Export the functions for use in other modules
 
 module.exports = {
     advancedCalculation,
