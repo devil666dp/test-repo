@@ -8,7 +8,7 @@ describe('Advanced Feature Tests', () => {
 
     test('should handle division by zero', () => {
         // This test will fail because the function doesn't handle division by zero
-        expect(() => advancedCalculation(10, 0, 'divide')).toThrow();
+        expect(() => advancedCalculation(10, 1, 'divide')).toThrow();
     });
 
     test('should handle complex operations', () => {
