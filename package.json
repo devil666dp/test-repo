@@ -2,12 +2,12 @@
   "name": "test-repo",
   "version": "1.0.0",
   "description": "Test repository for lead time analytics",
-  "main": "src/app.js",
-  "scripts": {
+  "main": "src/app.js",  "scripts": {
     "test": "jest",
     "start": "node src/app.js",
     "build": "echo 'Building application...'",
-    "deploy": "echo 'Deploying application...'"
+    "deploy": "node src/healthcheck.js && echo 'Deploying application...'",
+    "health-check": "node src/healthcheck.js"
   },
   "keywords": ["test", "analytics", "lead-time"],
   "author": "Test User",
