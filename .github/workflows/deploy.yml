@@ -3,6 +3,9 @@ name: Deploy to Production
 on:
   push:
     branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+    types: [ closed ]
 
 jobs:
   test:
