@@ -7,6 +7,7 @@ function advancedCalculation(x, y, operation) {
     switch (operation) {
         case 'divide':
             // BUG: Division by zero not handled properly
+            if(y==0) return y;
             return x / y; // This will cause issues when y is 0
         case 'complex':
             // BUG: Undefined variable reference
