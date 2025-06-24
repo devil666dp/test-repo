@@ -60,8 +60,6 @@ function performSafeCalculation(x, y, operation) {
     }
 }
 
-//fix the bugs
-// Export the functions for use in other modules
 
 module.exports = {
     advancedCalculation,
