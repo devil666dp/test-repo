@@ -1,6 +1,8 @@
 // Test file for advanced feature
 const { advancedCalculation } = require('../src/advanced-feature');
 
+
+
 describe('Advanced Feature Tests', () => {
     test('should handle division correctly', () => {
         expect(advancedCalculation(10, 2, 'divide')).toBe(5);
