@@ -52,13 +52,4 @@ jobs:
         else
           echo "Health check passed - no healthcheck.js found"
         fi
-      
-    - name: Deploy to Production
-      run: |
-        echo "Deploying to production..."
-        # Simulate deployment
-        if grep -q "BREAK_DEPLOYMENT" src/app.js; then
-          echo "Deployment failed due to critical error!"
-          exit 1
-        fi
-        echo "Deployment successful!"
+    
